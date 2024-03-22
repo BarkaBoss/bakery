@@ -18,5 +18,5 @@ public class Cart {
     private Long id;
 
     @OneToMany
-    List<Products> products;
+    List<Product> products;
 }
