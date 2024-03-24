@@ -19,6 +19,8 @@ target/
 *.iml
 *.ipr
 
+
+### Props
 src/main/resources/application.properties
 
 ### NetBeans ###

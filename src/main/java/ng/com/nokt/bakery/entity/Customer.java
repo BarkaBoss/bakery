@@ -5,22 +5,27 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Products {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 50)
     private String name;
-    private String description;
-    private int price;
-    private int quantity;
-    @OneToMany
-    private List<ProductImage> images;
+
+    @Column(unique = true)
+    private String email;
+
+    private String password;
+    private String phoneNumber;
+    private String address;
+
+
+    @OneToOne
+    private Cart cart;
 }

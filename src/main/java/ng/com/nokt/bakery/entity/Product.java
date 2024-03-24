@@ -2,6 +2,7 @@ package ng.com.nokt.bakery.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,12 +12,17 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Cart {
+@Builder
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+    private String description;
+    private int price;
+    private int quantity;
     @OneToMany
-    List<Product> products;
+    private List<ProductImage> images;
 }
