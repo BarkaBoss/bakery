@@ -1,6 +1,7 @@
 package ng.com.nokt.bakery.service;
 
 import ng.com.nokt.bakery.entity.Cart;
+import ng.com.nokt.bakery.entity.Product;
 import ng.com.nokt.bakery.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,11 @@ public class CartServiceImpl implements CartService{
         }else {
             throw new RuntimeException("Cart does not exist");
         }
+    }
+
+    @Override
+    public Cart addProductToCart(Product product, Cart cart) {
+        cart.getProducts().add(product);
+        return null;
     }
 }
