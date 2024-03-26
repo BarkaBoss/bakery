@@ -26,6 +26,6 @@ public class Customer {
     private String address;
 
 
-    @OneToOne
+    @OneToOne(mappedBy = "customer")
     private Cart cart;
 }

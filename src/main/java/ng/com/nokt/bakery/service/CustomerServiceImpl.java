@@ -30,17 +30,22 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public String createCustomer(CustomerDto customerDto) {
-        Customer customer = new Customer(
-                customerDto.getId(),
-                customerDto.getName(),
-                customerDto.getEmail(),
-                this.passwordEncoder.encode(customerDto.getPassword()),
-                customerDto.getPhoneNumber(),
-                customerDto.getAddress(),
-                null
-        );
-        customerRepository.save(customer);
-        return customer.getEmail();
+        if (customerRepository.findCustomerByEmail(customerDto.getEmail()) == null){
+            Customer customer = new Customer(
+                    customerDto.getId(),
+                    customerDto.getName(),
+                    customerDto.getEmail(),
+                    this.passwordEncoder.encode(customerDto.getPassword()),
+                    customerDto.getPhoneNumber(),
+                    customerDto.getAddress(),
+                    new Cart()
+            );
+            customerRepository.save(customer);
+            return customer.getEmail();
+        }else {
+            throw new RuntimeException("User already Exists");
+        }
+
     }
 
     @Override
